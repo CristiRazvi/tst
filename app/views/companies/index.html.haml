@@ -1,0 +1,21 @@
+= link_to 'Saved', saved_companies_path
+
+= form_with url: 'companies', method: :get do |form|
+  = text_field_tag :q
+  = form.submit 'Search'
+
+%table
+  - if @companies.blank?
+    No Companies
+
+  - @companies.each do |company|
+    %tr
+      %td
+        = company.company_number
+      %td
+        = company.title
+      %td
+        = form_with url: 'companies/add_to_favorites', method: :post do |form|
+          = hidden_field_tag 'company[title]', company.title
+          = hidden_field_tag 'company[company_number]', company.company_number
+          = form.submit

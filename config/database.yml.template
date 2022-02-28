@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  encoding: unicode
+  username: USERNAME
+  password: PASSWORD
+
+development:
+  <<: *default
+  database: bloom/development
+
+test:
+  <<: *default
+  database: bloom/test
+
+production:
+  <<: *default
+  database: bloom/production

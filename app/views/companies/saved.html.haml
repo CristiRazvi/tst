@@ -1,0 +1,8 @@
+= link_to 'Search', companies_url
+%table
+  - @companies.each do |company|
+    %tr
+      %td
+        = company.company_number
+      %td
+        = company.title
